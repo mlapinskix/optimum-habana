@@ -85,6 +85,7 @@ python run_speech_recognition_ctc.py \
     --use_lazy_mode \
     --gaudi_config_name="Habana/wav2vec2" \
     --throughput_warmup_steps="3" \
+    --sdp_on_bf16 \
     --bf16 \
     --use_hpu_graphs_for_training \
     --use_hpu_graphs_for_inference \
@@ -127,6 +128,7 @@ python ../gaudi_spawn.py \
     --use_lazy_mode \
     --gaudi_config_name Habana/wav2vec2 \
     --throughput_warmup_steps 3 \
+    --sdp_on_bf16 \
     --bf16 \
     --use_hpu_graphs_for_training \
     --use_hpu_graphs_for_inference \
@@ -210,6 +212,7 @@ python run_speech_recognition_ctc.py \
     --use_habana \
     --use_lazy_mode \
     --gaudi_config_name="Habana/wav2vec2" \
+    --sdp_on_bf16 \
     --bf16 \
     --use_hpu_graphs_for_inference \
     --sdp_on_bf16
@@ -250,6 +253,7 @@ python run_speech_recognition_seq2seq.py \
     --max_duration_in_seconds="30" \
     --text_column_name="sentence" \
     --freeze_feature_encoder="False" \
+    --sdp_on_bf16 \
     --bf16 \
     --overwrite_output_dir \
     --do_train \
@@ -289,6 +293,7 @@ python ../gaudi_spawn.py \
     --max_duration_in_seconds="30" \
     --text_column_name="sentence" \
     --freeze_feature_encoder="False" \
+    --sdp_on_bf16 \
     --bf16 \
     --overwrite_output_dir \
     --do_train \
@@ -322,6 +327,7 @@ python run_speech_recognition_seq2seq.py \
     --max_duration_in_seconds="30" \
     --text_column_name="sentence" \
     --freeze_feature_encoder="False" \
+    --sdp_on_bf16 \
     --bf16 \
     --overwrite_output_dir \
     --do_eval \

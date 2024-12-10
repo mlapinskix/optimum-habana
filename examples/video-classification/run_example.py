@@ -80,7 +80,10 @@ def run(
     warm_up_epcohs: int,
     use_hpu_graphs: bool,
     cast_bf16: bool,
+    sdp_on_bf16: bool,
 ):
+    if sdp_on_bf16:
+        torch._C._set_math_sdp_allow_fp16_bf16_reduction(True)
     processor = VideoMAEImageProcessor.from_pretrained(model_name)
     device = torch.device("hpu")
     model = VideoMAEForVideoClassification.from_pretrained(model_name)
@@ -147,6 +150,11 @@ def main():
         help="Whether to use HPU graphs or not. Using HPU graphs should give better latencies.",
     )
     parser.add_argument(
+        "--sdp_on_bf16",
+        action="store_true",
+        help="Allow pyTorch to use reduced precision in the SDPA math backend"
+    )
+    parser.add_argument(
         "--bf16",
         "-b",
         action="store_true",
@@ -166,16 +174,15 @@ def main():
         logging_config["level"] = args.log_level
     logging.basicConfig(**logging_config)
     logging.info(f"Config: {args}")
-
     if args.warm_up_epochs <= 0:
         logging.warning("No warm up sequence, inference time may be inaccurate.")
-
     run(
         args.model_name_or_path,
         args.video_paths,
         args.warm_up_epochs,
         args.use_hpu_graphs,
         args.bf16,
+        args.sdp_on_bf16,
     )
 
 

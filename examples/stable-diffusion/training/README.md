@@ -295,6 +295,7 @@ python train_text_to_image_sdxl.py \
   --gaudi_config_name Habana/stable-diffusion \
   --throughput_warmup_steps 3 \
   --dataloader_num_workers 8 \
+  --sdp_on_bf16 \
   --bf16 \
   --use_hpu_graphs_for_training \
   --use_hpu_graphs_for_inference \
@@ -330,6 +331,7 @@ python ../../gaudi_spawn.py --world_size 8 --use_mpi train_text_to_image_sdxl.py
   --gaudi_config_name Habana/stable-diffusion \
   --throughput_warmup_steps 3 \
   --dataloader_num_workers 8 \
+  --sdp_on_bf16 \
   --bf16 \
   --use_hpu_graphs_for_training \
   --use_hpu_graphs_for_inference \
@@ -365,6 +367,7 @@ python train_text_to_image_sdxl.py \
   --use_hpu_graphs_for_training \
   --use_hpu_graphs_for_inference \
   --checkpointing_steps 3000 \
+  --sdp_on_bf16 \
   --bf16
 ```
 
@@ -498,6 +501,7 @@ python ../text_to_image_generation.py \
     --use_habana \
     --use_hpu_graphs \
     --gaudi_config Habana/stable-diffusion \
+    --sdp_on_bf16 \
     --bf16
 ```
 
@@ -594,6 +598,7 @@ python ../text_to_image_generation.py \
     --use_habana \
     --use_hpu_graphs \
     --gaudi_config Habana/stable-diffusion \
+    --sdp_on_bf16 \
     --bf16
 ```
 
@@ -695,5 +700,6 @@ python ../text_to_image_generation.py \
     --use_habana \
     --use_hpu_graphs \
     --gaudi_config Habana/stable-diffusion \
+    --sdp_on_bf16 \
     --bf16
 ```
